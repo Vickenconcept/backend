@@ -1,10 +1,12 @@
-"use client";
+"use server";
 
 import { register } from "@/services/auth.service";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useActionState, useState } from "react";
 
 export default function RegistrationFrom() {
+    
+    const [state, formAction] = useActionState(register, undefined);
   
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
